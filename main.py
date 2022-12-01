@@ -1,11 +1,11 @@
-# (c) @AM_ROBOTS
+# in & as LazyDeveloper
+# Please Don't Remove Credit
 
 from configs import Config
 from pyrogram import Client, filters, idle
 from pyrogram.errors import QueryIdInvalid
-from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InlineQuery, InlineQueryResultArticle, \
-    InputTextMessageContent
-from TeamTeleRoid.forcesub import ForceSub
+from pyrogram.types import Message, InlineKeyboardMarkup, InlineKeyboardButton, CallbackQuery, InlineQuery, InlineQueryResultArticle,InputTextMessageContent
+from LazyDeveloper.forcesub import ForceSub
 import asyncio
 
 # Bot Client for Inline Search
@@ -25,21 +25,21 @@ User = Client(
 
 @Bot.on_message(filters.private & filters.command("start"))
 async def start_handler(_, event: Message):
-	await event.reply_photo("https://telegra.ph/file/165941ae764a56d6d9c89.jpg",
+	await event.reply_photo("https://telegra.ph/file/2b160d9765fe080c704d2.png",
                                 caption=Config.START_MSG.format(event.from_user.mention),
                                 reply_markup=InlineKeyboardMarkup([
-                                    [InlineKeyboardButton("Our Channel", url="https://t.me/sources_cods"),
-                                     InlineKeyboardButton("Creator", url="https://t.me/Am_robots")],
-                                    [InlineKeyboardButton("Help", callback_data="Help_msg"),
-                                     InlineKeyboardButton("About", callback_data="About_msg")]]))
+                                    [InlineKeyboardButton("🔺 Donate us 🔺", url="upi://pay?pa=7808912076@paytm&pn=INTKHAB AHMAD &cu=INR")],
+                                    [InlineKeyboardButton("⚡️ LazyDeveloper ⚡️", url="https://t.me/LazyDeveloper")],
+                                    [InlineKeyboardButton("🤒Help", callback_data="Help_msg"),
+                                    InlineKeyboardButton("🦋About", callback_data="About_msg")]]))
 
 @Bot.on_message(filters.private & filters.command("help"))
 async def help_handler(_, event: Message):
 
     await event.reply_text(Config.ABOUT_HELP_TEXT.format(event.from_user.mention),
         reply_markup=InlineKeyboardMarkup([
-            [InlineKeyboardButton("Our Channel", url="https://t.me/MOVIES_ZILAA"),
-             InlineKeyboardButton("Our Group", url="https://t.me/Official_Movies_Group"), 
+            [InlineKeyboardButton("Updates", url="https://t.me/LazyDeveloper"),
+             InlineKeyboardButton("Support Group", url="https://t.me/LazyPrincessSupport"), 
              InlineKeyboardButton("About", callback_data="About_msg")]
         ])
     )
@@ -48,7 +48,7 @@ async def help_handler(_, event: Message):
 async def inline_handlers(_, event: Message):
     if event.text == '/start':
         return
-    answers = f'**📂 Results For ➠ {event.text} \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n➠ Type Only Movie Name With Correct Spelling.✍️\n➠ Add Year For Better Result.🗓️\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+    answers = f'**📂 Hunts For ➠ {event.text} \n⟥⟥⟥⟥⟥⟥⟥⟥⟥⟥⟥⟥⟥⟤\n🔊\n➠ Type Only Movie Name With Correct Spelling. Dont type Bhejo, Bhej Do, send me etc...✍️\n➠ Add Year For Better Result.🗓️\n⟥⟥⟥⟥⟥⟥⟥⟥⟥⟥⟥⟥⟥⟤\n\n**'
     async for message in User.search_messages(chat_id=Config.CHANNEL_ID, limit=50, query=event.text):
         if message.text:
             thumb = None
@@ -57,10 +57,10 @@ async def inline_handlers(_, event: Message):
             if "|||" in message.text:
                 f_text = message.text.split("|||", 1)[0]
                 msg_text = message.text.html.split("|||", 1)[0]
-            answers += f'**🍿 Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 About ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 60Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
+            answers += f'**🎞 Movie Title ➠ ' + '' + f_text.split("\n", 1)[0] + '' + '\n\n📜 Download URLs ➠ ' + '' + f_text.split("\n", 2)[-1] + ' \n\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\nLink Will Auto Delete In 35Sec...⏰\n▰▱▰▱▰▱▰▱▰▱▰▱▰▱\n\n**'
     try:
         msg = await event.reply_text(answers)
-        await asyncio.sleep(60)
+        await asyncio.sleep(35)
         await event.delete()
         await msg.delete()
     except:
@@ -77,12 +77,11 @@ async def button(bot, cmd: CallbackQuery):
 			reply_markup=InlineKeyboardMarkup(
 				[
 					[
-						InlineKeyboardButton("Our Channel", url="https://t.me/MOVIES_ZILAA"),
-						InlineKeyboardButton("Join", url="https://t.me/Official_Movies_Group")
+						InlineKeyboardButton("Updates Channel", url="https://t.me/LazyDeveloper")
 					],
 					[
-						InlineKeyboardButton("Creator", url="https://t.me/Am_RoBots"),
-						InlineKeyboardButton("Home", callback_data="gohome")
+						InlineKeyboardButton("Connect Admin", url="https://t.me/LazyDeveloper"),
+						InlineKeyboardButton("🏠Home", callback_data="gohome")
 					]
 				]
 			),
@@ -94,13 +93,12 @@ async def button(bot, cmd: CallbackQuery):
 			disable_web_page_preview=True,
 			reply_markup=InlineKeyboardMarkup(
 				[
-					[
-						InlineKeyboardButton("About", callback_data="About_msg"),
-						InlineKeyboardButton("Our Channel", url="https://t.me/sources_cods")
+					[   InlineKeyboardButton("Help", callback_data="Help_msg"),
+						InlineKeyboardButton("Updates Channel", url="https://t.me/LazyDeveloper")
 					], 
-                                        [
-						InlineKeyboardButton("Owner", url="https://t.me/Am_RoBots"),
-						InlineKeyboardButton("Home", callback_data="gohome")
+                    [
+						InlineKeyboardButton("Connect Admin", url="https://t.me/LazyDeveloper"),
+						InlineKeyboardButton("🏠Home", callback_data="gohome")
 					]
 				]
 			),
@@ -112,13 +110,12 @@ async def button(bot, cmd: CallbackQuery):
 			disable_web_page_preview=True,
 			reply_markup=InlineKeyboardMarkup(
 				[
-                                        [
+                    [
 						InlineKeyboardButton("Help", callback_data="Help_msg"),
 						InlineKeyboardButton("About", callback_data="About_msg")
 					],
 					[
-						InlineKeyboardButton("Support", url="https://t.me/Am_RoBots"),
-						InlineKeyboardButton("Channel", url="https://t.me/sources_cods")
+						InlineKeyboardButton("Support Channel", url="https://t.me/LazyPrincessSupport"),
 					]
 				]
 			),
