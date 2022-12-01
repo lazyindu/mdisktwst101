@@ -10,4 +10,3 @@ bs4
 heroku3
 validators
 python-dotenv
-aiohttp
